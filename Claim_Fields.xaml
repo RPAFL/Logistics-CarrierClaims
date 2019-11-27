@@ -1,0 +1,482 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="claims" this:claims.in_CartonNumber="1Z09R62R4228512739" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_CartonNumber" Type="InArgument(x:String)" />
+    <x:Property Name="in_TransactionItem" Type="InArgument(sd:DataRow)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>795,4241</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Input Claim Fields before Submitting Claim" sap:VirtualizedContainerService.HintSize="755,4161" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" sap2010:Annotation.AnnotationText="Check Carton Number Staring with 1Z and based on that fill claim input fields as UPS/STBL before submitting the Claim." BrowserType="IE" DisplayName="US Claims" sap:VirtualizedContainerService.HintSize="733,4037" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="64953195b2237c375ab48deb34840f52" Selector="&lt;html title='Claim Form*' /&gt;">
+      <ui:BrowserScope.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Filling Claim Input Fields before Claim Submission" sap:VirtualizedContainerService.HintSize="719,3891" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="697,91" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Input Claim Fields based on Carton Starting with 1Z&quot;]" />
+            <If Condition="[in_CartonNumber.StartsWith(&quot;1Z&quot;)]" DisplayName="Check Carton Starting with 1Z" sap:VirtualizedContainerService.HintSize="697,884" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Then>
+                <Sequence DisplayName="Carton Starts with 1Z" sap:VirtualizedContainerService.HintSize="336,737" sap2010:WorkflowViewState.IdRef="Sequence_1">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Assigning Line Haul Carrier as UPS&quot;]" />
+                  <ui:SelectItem ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select Line Haul Carrier as UPS" sap:VirtualizedContainerService.HintSize="314,134" sap2010:WorkflowViewState.IdRef="SelectItem_1" Item="UNITED PARCEL SERVICE">
+                    <ui:SelectItem.Items>
+                      <scg:List x:TypeArguments="x:String" Capacity="50">
+                        <x:String>DART TRANSIT</x:String>
+                        <x:String>DHX</x:String>
+                        <x:String>DHXI</x:String>
+                        <x:String>DIGBY TRUCK LINE INC</x:String>
+                        <x:String>ELITE RETAIL</x:String>
+                        <x:String>ELITE TRANSPORT</x:String>
+                        <x:String>EXPRESS SAVER</x:String>
+                        <x:String>FEDERAL EXPRESS</x:String>
+                        <x:String>FORWARD AIR JACKSONVILLE</x:String>
+                        <x:String>Gainey</x:String>
+                        <x:String>GILBERT EXPRESS</x:String>
+                        <x:String>HUDD</x:String>
+                        <x:String>INTERSTATE DIST</x:String>
+                        <x:String>J.B. HUNT</x:String>
+                        <x:String>JOSEPH ELETTO TRANSFER</x:String>
+                        <x:String>KANSAS CITY PIGGYBACK</x:String>
+                        <x:String>LTIA</x:String>
+                        <x:String>MARLIN TRANSPORT</x:String>
+                        <x:String>MCNEIL TRUCKING</x:String>
+                        <x:String>MOKAN</x:String>
+                        <x:String>MOKAN CONTAINER SERVICE</x:String>
+                        <x:String>MS CARRIER</x:String>
+                        <x:String>MSM TRANSPORTATION</x:String>
+                        <x:String>OVERNIGHT EXPRESS</x:String>
+                        <x:String>PENSER SERVICE CENTER</x:String>
+                        <x:String>PERFORMANCE TEAM</x:String>
+                        <x:String>POWERLINK</x:String>
+                        <x:String>PRIORITY OVERNIGHT</x:String>
+                        <x:String>ROADWAY PACKAGE SYSTEM</x:String>
+                        <x:String>SALSON LOGISTICS</x:String>
+                        <x:String>SCHNEIDER NATIONAL INC</x:String>
+                        <x:String>SHAW CONTAINER SERVICE</x:String>
+                        <x:String>SITTON MOTOR LINES</x:String>
+                        <x:String>SMARTWAYS</x:String>
+                        <x:String>STBL</x:String>
+                        <x:String>STRATEGIC LOGISTICS</x:String>
+                        <x:String>SUPER TRANSPORT INC.</x:String>
+                        <x:String>SWIFT TRANSPORTATION CO</x:String>
+                        <x:String>TOLL IPEC</x:String>
+                        <x:String>TOTAL TRANSPORTATION</x:String>
+                        <x:String>TRANSLAND</x:String>
+                        <x:String>TRIANGLE TRUCKING</x:String>
+                        <x:String>UNITED PARCEL SERVICE</x:String>
+                        <x:String>US EXPRESS ENTERPRISES</x:String>
+                        <x:String>USF GLEN MOORE</x:String>
+                        <x:String>VOYAGER EXPRESS</x:String>
+                        <x:String>WALLER TRUCK COMPANY</x:String>
+                        <x:String>WATKINS</x:String>
+                        <x:String>WERNER ENTERPRISES</x:String>
+                        <x:String>YELLOW FREIGHT</x:String>
+                      </scg:List>
+                    </ui:SelectItem.Items>
+                    <ui:SelectItem.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="1db1ccbe5f2c3cf577d6ef422e6cbbd2" Selector="&lt;webctrl id='SCAC' tag='SELECT' /&gt;" WaitForReady="INTERACTIVE" />
+                    </ui:SelectItem.Target>
+                  </ui:SelectItem>
+                  <ui:SelectItem ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select Delivery Agent as UPS" sap:VirtualizedContainerService.HintSize="314,134" sap2010:WorkflowViewState.IdRef="SelectItem_2" Item="UNITED PARCEL SERVICE">
+                    <ui:SelectItem.Items>
+                      <scg:List x:TypeArguments="x:String" Capacity="50">
+                        <x:String>GLEESON TRUCKING</x:String>
+                        <x:String>HUDD</x:String>
+                        <x:String>INTERSTATE INTERMODAL INC</x:String>
+                        <x:String>KELLER TRANSFER (LIVONIA)</x:String>
+                        <x:String>LYNDEN TRANSPORT</x:String>
+                        <x:String>MAGNOLIA (PORT ALLEN)</x:String>
+                        <x:String>MARLIN TRANSPORT</x:String>
+                        <x:String>NATIONAL DISTRIBUTION CENTER</x:String>
+                        <x:String>NESBITT TRUCKING</x:String>
+                        <x:String>NEW DEAL LOGISTICS</x:String>
+                        <x:String>NFI INDUSTRIES</x:String>
+                        <x:String>NJ STORAGE</x:String>
+                        <x:String>NORDOL INC</x:String>
+                        <x:String>PENSERSC</x:String>
+                        <x:String>PERFORMANCE TEAM</x:String>
+                        <x:String>POWERLINK</x:String>
+                        <x:String>PRIORITY SERVICES</x:String>
+                        <x:String>REMCO FORWARDING</x:String>
+                        <x:String>SALSON LOGISTICS</x:String>
+                        <x:String>SAME DAY RIGHT-O-WAY</x:String>
+                        <x:String>SECAUCUS WHSE</x:String>
+                        <x:String>SMARTWAYS</x:String>
+                        <x:String>SPECIAL DISPATCH OF CA</x:String>
+                        <x:String>SPECIAL DISPATCH OF SL</x:String>
+                        <x:String>SPECIAL DISTRIBUTION SVCS</x:String>
+                        <x:String>STBL</x:String>
+                        <x:String>STRATEGIC LOGISTICS</x:String>
+                        <x:String>THE GILBERT COMPANY</x:String>
+                        <x:String>TIME CRITICAL-HANOVER</x:String>
+                        <x:String>TOLL IPEC</x:String>
+                        <x:String>TOWNE AIR FREIGHT</x:String>
+                        <x:String>TRANSLAND</x:String>
+                        <x:String>TRIANGLE WORLDWIDE</x:String>
+                        <x:String>UNITED PARCEL SERVICE</x:String>
+                        <x:String>USA CARRIERS (JACKSONVILLE)</x:String>
+                        <x:String>USA CARRIERS (KANSAS CITY)</x:String>
+                        <x:String>USA CARRIERS (LAKELAND)</x:String>
+                        <x:String>USA CARRIERS (MEDLEY)</x:String>
+                        <x:String>USA CARRIERS JACKSONVILLE</x:String>
+                        <x:String>VELOCITY DALLAS</x:String>
+                        <x:String>VELOCITY EXPRESS HANOVER</x:String>
+                        <x:String>VELOCITY EXPRESS INC OHIO</x:String>
+                        <x:String>VELOCITY EXPRESS INC MIAMI</x:String>
+                        <x:String>VELOCITY EXPRESS INC ORLANDO</x:String>
+                        <x:String>VELOCITY EXPRESS JACKSONVILLE</x:String>
+                        <x:String>VELOCITY EXPRESS JESSUP</x:String>
+                        <x:String>VELOCITY HOUSTON</x:String>
+                        <x:String>VOYAGER EXPRESS</x:String>
+                        <x:String>YRC LOGISTICS</x:String>
+                        <x:String>YRC LOGISTICS - HOUSTON</x:String>
+                      </scg:List>
+                    </ui:SelectItem.Items>
+                    <ui:SelectItem.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="f54a9af6cb865bc9b1b5a083be0bbe49" Selector="&lt;webctrl aaname='Delivery Agent' idx='4' /&gt;" WaitForReady="INTERACTIVE" />
+                    </ui:SelectItem.Target>
+                  </ui:SelectItem>
+                  <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="True" DisplayName="Input UPS in Trailer Field" EmptyField="True" sap:VirtualizedContainerService.HintSize="314,134" sap2010:WorkflowViewState.IdRef="TypeInto_1" SendWindowMessages="False" SimulateType="True" Text="UPS">
+                    <ui:TypeInto.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="2e60974f03859e02c0a70f9028402fc9" Selector="&lt;webctrl aaname='Trailer' idx='2' /&gt;" WaitForReady="INTERACTIVE" />
+                    </ui:TypeInto.Target>
+                  </ui:TypeInto>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Carton Starts with other than 1Z" sap:VirtualizedContainerService.HintSize="336,737" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Assigning Line Haul Carrier as STBL&quot;]" />
+                  <ui:SelectItem ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select Line Haul Carrier as STBL" sap:VirtualizedContainerService.HintSize="314,134" sap2010:WorkflowViewState.IdRef="SelectItem_7" Item="STBL">
+                    <ui:SelectItem.Items>
+                      <scg:List x:TypeArguments="x:String" Capacity="50">
+                        <x:String>DART TRANSIT</x:String>
+                        <x:String>DHX</x:String>
+                        <x:String>DHXI</x:String>
+                        <x:String>DIGBY TRUCK LINE INC</x:String>
+                        <x:String>ELITE RETAIL</x:String>
+                        <x:String>ELITE TRANSPORT</x:String>
+                        <x:String>EXPRESS SAVER</x:String>
+                        <x:String>FEDERAL EXPRESS</x:String>
+                        <x:String>FORWARD AIR JACKSONVILLE</x:String>
+                        <x:String>Gainey</x:String>
+                        <x:String>GILBERT EXPRESS</x:String>
+                        <x:String>HUDD</x:String>
+                        <x:String>INTERSTATE DIST</x:String>
+                        <x:String>J.B. HUNT</x:String>
+                        <x:String>JOSEPH ELETTO TRANSFER</x:String>
+                        <x:String>KANSAS CITY PIGGYBACK</x:String>
+                        <x:String>LTIA</x:String>
+                        <x:String>MARLIN TRANSPORT</x:String>
+                        <x:String>MCNEIL TRUCKING</x:String>
+                        <x:String>MOKAN</x:String>
+                        <x:String>MOKAN CONTAINER SERVICE</x:String>
+                        <x:String>MS CARRIER</x:String>
+                        <x:String>MSM TRANSPORTATION</x:String>
+                        <x:String>OVERNIGHT EXPRESS</x:String>
+                        <x:String>PENSER SERVICE CENTER</x:String>
+                        <x:String>PERFORMANCE TEAM</x:String>
+                        <x:String>POWERLINK</x:String>
+                        <x:String>PRIORITY OVERNIGHT</x:String>
+                        <x:String>ROADWAY PACKAGE SYSTEM</x:String>
+                        <x:String>SALSON LOGISTICS</x:String>
+                        <x:String>SCHNEIDER NATIONAL INC</x:String>
+                        <x:String>SHAW CONTAINER SERVICE</x:String>
+                        <x:String>SITTON MOTOR LINES</x:String>
+                        <x:String>SMARTWAYS</x:String>
+                        <x:String>STBL</x:String>
+                        <x:String>STRATEGIC LOGISTICS</x:String>
+                        <x:String>SUPER TRANSPORT INC.</x:String>
+                        <x:String>SWIFT TRANSPORTATION CO</x:String>
+                        <x:String>TOLL IPEC</x:String>
+                        <x:String>TOTAL TRANSPORTATION</x:String>
+                        <x:String>TRANSLAND</x:String>
+                        <x:String>TRIANGLE TRUCKING</x:String>
+                        <x:String>UNITED PARCEL SERVICE</x:String>
+                        <x:String>US EXPRESS ENTERPRISES</x:String>
+                        <x:String>USF GLEN MOORE</x:String>
+                        <x:String>VOYAGER EXPRESS</x:String>
+                        <x:String>WALLER TRUCK COMPANY</x:String>
+                        <x:String>WATKINS</x:String>
+                        <x:String>WERNER ENTERPRISES</x:String>
+                        <x:String>YELLOW FREIGHT</x:String>
+                      </scg:List>
+                    </ui:SelectItem.Items>
+                    <ui:SelectItem.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="1db1ccbe5f2c3cf577d6ef422e6cbbd2" Selector="&lt;webctrl id='SCAC' tag='SELECT' /&gt;" WaitForReady="INTERACTIVE" />
+                    </ui:SelectItem.Target>
+                  </ui:SelectItem>
+                  <ui:SelectItem ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select Delivery Agent as STBL" sap:VirtualizedContainerService.HintSize="314,134" sap2010:WorkflowViewState.IdRef="SelectItem_8" Item="STBL">
+                    <ui:SelectItem.Items>
+                      <scg:List x:TypeArguments="x:String" Capacity="50">
+                        <x:String>GLEESON TRUCKING</x:String>
+                        <x:String>HUDD</x:String>
+                        <x:String>INTERSTATE INTERMODAL INC</x:String>
+                        <x:String>KELLER TRANSFER (LIVONIA)</x:String>
+                        <x:String>LYNDEN TRANSPORT</x:String>
+                        <x:String>MAGNOLIA (PORT ALLEN)</x:String>
+                        <x:String>MARLIN TRANSPORT</x:String>
+                        <x:String>NATIONAL DISTRIBUTION CENTER</x:String>
+                        <x:String>NESBITT TRUCKING</x:String>
+                        <x:String>NEW DEAL LOGISTICS</x:String>
+                        <x:String>NFI INDUSTRIES</x:String>
+                        <x:String>NJ STORAGE</x:String>
+                        <x:String>NORDOL INC</x:String>
+                        <x:String>PENSERSC</x:String>
+                        <x:String>PERFORMANCE TEAM</x:String>
+                        <x:String>POWERLINK</x:String>
+                        <x:String>PRIORITY SERVICES</x:String>
+                        <x:String>REMCO FORWARDING</x:String>
+                        <x:String>SALSON LOGISTICS</x:String>
+                        <x:String>SAME DAY RIGHT-O-WAY</x:String>
+                        <x:String>SECAUCUS WHSE</x:String>
+                        <x:String>SMARTWAYS</x:String>
+                        <x:String>SPECIAL DISPATCH OF CA</x:String>
+                        <x:String>SPECIAL DISPATCH OF SL</x:String>
+                        <x:String>SPECIAL DISTRIBUTION SVCS</x:String>
+                        <x:String>STBL</x:String>
+                        <x:String>STRATEGIC LOGISTICS</x:String>
+                        <x:String>THE GILBERT COMPANY</x:String>
+                        <x:String>TIME CRITICAL-HANOVER</x:String>
+                        <x:String>TOLL IPEC</x:String>
+                        <x:String>TOWNE AIR FREIGHT</x:String>
+                        <x:String>TRANSLAND</x:String>
+                        <x:String>TRIANGLE WORLDWIDE</x:String>
+                        <x:String>UNITED PARCEL SERVICE</x:String>
+                        <x:String>USA CARRIERS (JACKSONVILLE)</x:String>
+                        <x:String>USA CARRIERS (KANSAS CITY)</x:String>
+                        <x:String>USA CARRIERS (LAKELAND)</x:String>
+                        <x:String>USA CARRIERS (MEDLEY)</x:String>
+                        <x:String>USA CARRIERS JACKSONVILLE</x:String>
+                        <x:String>VELOCITY DALLAS</x:String>
+                        <x:String>VELOCITY EXPRESS HANOVER</x:String>
+                        <x:String>VELOCITY EXPRESS INC OHIO</x:String>
+                        <x:String>VELOCITY EXPRESS INC MIAMI</x:String>
+                        <x:String>VELOCITY EXPRESS INC ORLANDO</x:String>
+                        <x:String>VELOCITY EXPRESS JACKSONVILLE</x:String>
+                        <x:String>VELOCITY EXPRESS JESSUP</x:String>
+                        <x:String>VELOCITY HOUSTON</x:String>
+                        <x:String>VOYAGER EXPRESS</x:String>
+                        <x:String>YRC LOGISTICS</x:String>
+                        <x:String>YRC LOGISTICS - HOUSTON</x:String>
+                      </scg:List>
+                    </ui:SelectItem.Items>
+                    <ui:SelectItem.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="f54a9af6cb865bc9b1b5a083be0bbe49" Selector="&lt;webctrl aaname='Delivery Agent' idx='4' /&gt;" WaitForReady="INTERACTIVE" />
+                    </ui:SelectItem.Target>
+                  </ui:SelectItem>
+                  <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="True" DisplayName="Input STBL in Trailer Field" EmptyField="True" sap:VirtualizedContainerService.HintSize="314,134" sap2010:WorkflowViewState.IdRef="TypeInto_3" SendWindowMessages="False" SimulateType="True" Text="STBL">
+                    <ui:TypeInto.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="2e60974f03859e02c0a70f9028402fc9" Selector="&lt;webctrl aaname='Trailer' idx='2' /&gt;" WaitForReady="INTERACTIVE" />
+                    </ui:TypeInto.Target>
+                  </ui:TypeInto>
+                </Sequence>
+              </If.Else>
+            </If>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="697,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Bot Provided Line Haul Carrier, Delivery agent and Trailer Field Sucessfully&quot;]" />
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="697,91" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Assigning OSDOnhand AS NO&quot;]" />
+            <ui:SelectItem ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select OSDOnhand As NO" sap:VirtualizedContainerService.HintSize="697,134" sap2010:WorkflowViewState.IdRef="SelectItem_9" Item="No">
+              <ui:SelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="4">
+                  <x:String>Yes</x:String>
+                  <x:String>No</x:String>
+                </scg:List>
+              </ui:SelectItem.Items>
+              <ui:SelectItem.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="35367b3810c1934102a57b6226b2c75a" Selector="&lt;webctrl id='OSDOnhand' tag='SELECT' /&gt;" WaitForReady="INTERACTIVE" />
+              </ui:SelectItem.Target>
+            </ui:SelectItem>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="697,91" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Assigning PODOnhand AS Yes&quot;]" />
+            <ui:SelectItem ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select PODOnhand As Yes" sap:VirtualizedContainerService.HintSize="697,134" sap2010:WorkflowViewState.IdRef="SelectItem_10" Item="Yes">
+              <ui:SelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="4">
+                  <x:String>Yes</x:String>
+                  <x:String>No</x:String>
+                </scg:List>
+              </ui:SelectItem.Items>
+              <ui:SelectItem.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="e1a7d39b01d65acb4bb89cfdddfb57bc" Selector="&lt;webctrl id='PODOnhand' tag='SELECT' /&gt;" WaitForReady="INTERACTIVE" />
+              </ui:SelectItem.Target>
+            </ui:SelectItem>
+            <If Condition="[in_TransactionItem(&quot;Trans Type&quot;).ToString.Equals(&quot;41-5&quot;)]" sap:VirtualizedContainerService.HintSize="697,536" sap2010:WorkflowViewState.IdRef="If_2">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="336,389" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Assigning PODDisposition As POD Exception For 41-5 Claim Type&quot;]" />
+                  <ui:SelectItem ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select PODDispositon As POD Exception" sap:VirtualizedContainerService.HintSize="314,134" sap2010:WorkflowViewState.IdRef="SelectItem_11" Item="POD Exception">
+                    <ui:SelectItem.Items>
+                      <scg:List x:TypeArguments="x:String" Capacity="4">
+                        <x:String>No POD</x:String>
+                        <x:String>POD Clear</x:String>
+                        <x:String>POD Exception</x:String>
+                      </scg:List>
+                    </ui:SelectItem.Items>
+                    <ui:SelectItem.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="b38439b49c5211a3d9348e48607a00a0" Selector="&lt;webctrl id='PODDisposition' tag='SELECT' /&gt;" WaitForReady="INTERACTIVE" />
+                    </ui:SelectItem.Target>
+                  </ui:SelectItem>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap:VirtualizedContainerService.HintSize="336,389" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Assigning PODDisposition As POD Clear For 43-2 Claim Type&quot;]" />
+                  <ui:SelectItem ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select PODDispositon As POD Clear" sap:VirtualizedContainerService.HintSize="314,134" sap2010:WorkflowViewState.IdRef="SelectItem_13" Item="POD Clear">
+                    <ui:SelectItem.Items>
+                      <scg:List x:TypeArguments="x:String" Capacity="4">
+                        <x:String>No POD</x:String>
+                        <x:String>POD Clear</x:String>
+                        <x:String>POD Exception</x:String>
+                      </scg:List>
+                    </ui:SelectItem.Items>
+                    <ui:SelectItem.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="b38439b49c5211a3d9348e48607a00a0" Selector="&lt;webctrl id='PODDisposition' tag='SELECT' /&gt;" WaitForReady="INTERACTIVE" />
+                    </ui:SelectItem.Target>
+                  </ui:SelectItem>
+                </Sequence>
+              </If.Else>
+            </If>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="697,91" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Assigning ClaimFiledAgainst As UPS&quot;]" />
+            <ui:SelectItem ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select ClaimFiledAgainst as UPS" sap:VirtualizedContainerService.HintSize="697,134" sap2010:WorkflowViewState.IdRef="SelectItem_12" Item="UPS">
+              <ui:SelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="4">
+                  <x:String>Delivery Agent</x:String>
+                  <x:String>Line Haul</x:String>
+                  <x:String>UPS</x:String>
+                  <x:String>Fed Ex</x:String>
+                </scg:List>
+              </ui:SelectItem.Items>
+              <ui:SelectItem.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="3b69a7bf9bbad9806e9865eb05bdee76" Selector="&lt;webctrl id='ClaimFiledAgainst' tag='SELECT' /&gt;" WaitForReady="INTERACTIVE" />
+              </ui:SelectItem.Target>
+            </ui:SelectItem>
+            <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="True" DisplayName="Input Current Date" EmptyField="True" sap:VirtualizedContainerService.HintSize="697,134" sap2010:WorkflowViewState.IdRef="TypeInto_4" SendWindowMessages="False" SimulateType="True" Text="[System.DateTime.Now.ToString(“MM/dd/yyyy”)]">
+              <ui:TypeInto.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="bfbeb3722825e6efc4950ff29329a94f" Selector="&lt;webctrl id='ClaimFiledDate' tag='INPUT' /&gt;" WaitForReady="INTERACTIVE" />
+              </ui:TypeInto.Target>
+            </ui:TypeInto>
+            <If Condition="[NOT in_TransactionItem(&quot;Trans Type&quot;).ToString.Equals(&quot;41-5&quot;)]" sap:VirtualizedContainerService.HintSize="697,916" sap2010:WorkflowViewState.IdRef="If_3">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="336,769" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;Clicking on Processing Complete Checkbox&quot;]" />
+                  <ui:Check ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" Action="Check" DisplayName="Click Processing Complete Checkbox " sap:VirtualizedContainerService.HintSize="314,106" sap2010:WorkflowViewState.IdRef="Check_2">
+                    <ui:Check.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="df814f43185534a7cc77cd2c4733adfd" Selector="&lt;webctrl id='IsProcessed' tag='INPUT' /&gt;" WaitForReady="INTERACTIVE" />
+                    </ui:Check.Target>
+                  </ui:Check>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;Clicking on Save&quot;]" />
+                  <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Save" sap:VirtualizedContainerService.HintSize="314,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="True">
+                    <ui:Click.CursorPosition>
+                      <ui:CursorPosition Position="Center">
+                        <ui:CursorPosition.OffsetX>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetX>
+                        <ui:CursorPosition.OffsetY>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetY>
+                      </ui:CursorPosition>
+                    </ui:Click.CursorPosition>
+                    <ui:Click.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="5eab932a9a3825824ecc786bac0719dc" Selector="&lt;webctrl tag='INPUT' type='submit' aaname='Save' /&gt;" WaitForReady="INTERACTIVE" />
+                    </ui:Click.Target>
+                  </ui:Click>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Clicked on Save, Claim Saved Sucessfully&quot;]" />
+                </Sequence>
+              </If.Then>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </ui:BrowserScope.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:BrowserScope>
+  </Sequence>
+</Activity>
